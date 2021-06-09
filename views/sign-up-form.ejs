@@ -12,7 +12,9 @@
 
       <label for="password">Password: </label>
       <input type="password" name="password" minlength="8" required />
-
+      <% if (typeof message !== 'undefined') { %>
+      <h3><%= message %></h3>
+      <%} %>
       <button type="submit">Sign Up</button>
     </form>
     <a href="/log-in">Log In</a>

@@ -7,6 +7,7 @@
   <body>
     <% if (user) {%>
     <h1>Welcome Back <%= user.username%></h1>
+    <a href="/create-message">New Message</a>
     <form action="/log-out?_method=DELETE" method="POST">
       <button type="submit">Log Out</button>
     </form>

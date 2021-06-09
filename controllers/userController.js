@@ -1,6 +1,5 @@
 const User = require('../models/user');
 const { body, validationResult } = require('express-validator');
-const async = require('async');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
@@ -18,7 +17,7 @@ exports.create_user_post = [
     .isLength({ min: 8 })
     .escape(),
 
-  async (req, res, next) => {
+  (req, res, next) => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -26,20 +25,35 @@ exports.create_user_post = [
       return;
     }
 
-    try {
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    User.findOne({ username: req.body.username }, async (err, user) => {
+      if (err) {
+        return res.render('sign-up-form', { message: err.message });
+      }
+      if (user) {
+        return res.render('sign-up-form', {
+          message: 'A user with that name already exists.',
+        });
+      }
 
-      const user = new User({
-        username: req.body.username,
-        password: hashedPassword,
-      });
+      try {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-      const saveUser = await user.save();
+        const newUser = await new User({
+          username: req.body.username,
+          password: hashedPassword,
+        }).save();
 
-      res.redirect('/log-in');
-    } catch {
-      res.redirect('/sign-up');
-    }
+        req.login(newUser, (err) => {
+          if (err) {
+            return next(err);
+          }
+
+          return res.redirect('/');
+        });
+      } catch {
+        res.redirect('/sign-up');
+      }
+    });
   },
 ];
 

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
+const messageController = require('../controllers/messageController');
 const auth = require('../middleware/auth');
 
 /* GET home page. */
@@ -34,4 +35,17 @@ router.delete('/log-out', (req, res) => {
   res.redirect('/');
 });
 
+// Render create message page on GET
+router.get(
+  '/create-message',
+  auth.checkAuthenticate,
+  messageController.create_message_get
+);
+
+// Handle create message on POST
+router.post(
+  '/create-message',
+  auth.checkAuthenticate,
+  messageController.create_message_post
+);
 module.exports = router;
