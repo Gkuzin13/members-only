@@ -5,9 +5,7 @@ const messageController = require('../controllers/messageController');
 const auth = require('../middleware/auth');
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  res.render('index', { user: req.user });
-});
+router.get('/', messageController.get_messages);
 
 // Get sign up page
 router.get(
