@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  if user
+    h1 Welcome Back #{user.username}
+    a(href='/create-message') New Message
+    form(action='/log-out?_method=DELETE' method='POST')
+      button(type='submit') Log Out
+
+  else  
+    h1 Express
+    p Welcome to Express
+    a(href='/sign-up') Sign Up
+    a(href='/log-in') Log In
+
+  ul 
+    each message in messages 
+      li #{message.title}  
+

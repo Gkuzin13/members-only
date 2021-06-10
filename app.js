@@ -33,7 +33,7 @@ mongoose.connection.on('connected', () => {
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'pug');
 app.use(express.urlencoded({ extended: false }));
 app.use(flash());
 app.use(

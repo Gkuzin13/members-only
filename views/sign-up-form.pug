@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1 Sign Up
+
+  form(action='' method='POST')
+    label(for='username') Username: 
+    input(type='text' name='username' required='')
+    label(for='password') Password: 
+    input(type='password' name='password' minlength='8' required='')
+    if (typeof message !== 'undefined')
+      h3 #{message.error}
+     
+    button(type='submit') Sign Up
+    
+  a(href='/log-in') Log In
+
