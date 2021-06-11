@@ -3,23 +3,29 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "tailwind:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css",
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
-    "async": "^0.9.2",
+    "async": "^3.2.0",
+    "autoprefixer": "^10.2.6",
     "bcryptjs": "^2.4.3",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
+    "date-fns": "^2.22.1",
+    "debug": "^4.3.1",
+    "express": "^4.17.1",
     "express-flash": "^0.0.2",
     "express-session": "^1.17.2",
     "express-validator": "^6.11.1",
-    "http-errors": "~1.6.3",
+    "http-errors": "^1.8.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.12.13",
-    "morgan": "~1.9.1",
+    "morgan": "^1.10.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "pug": "^3.0.2"
+    "postcss": "^8.3.2",
+    "postcss-cli": "^8.3.1",
+    "pug": "^3.0.2",
+    "tailwindcss": "^2.1.4"
   },
   "devDependencies": {
     "dotenv": "^10.0.0",

@@ -1,15 +1,43 @@
 doctype html
-html
+html(class=" font-open-sans")
   head
-    title Members Only
-   
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+    
+    link(rel='preconnect' href='https://fonts.gstatic.com')
+    link(href='https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap' rel='stylesheet')
 
+    link(rel='stylesheet', href='/stylesheets/style.css')
     link(href="https://fonts.googleapis.com/icon?family=Material+Icons"
     rel="stylesheet")
 
-  body
-    nav
-      h1 hi
+    title Members Only
 
+  body(class="font-open-sans")
+    span(class=" bg-main h-full w-full bg-no-repeat bg-cover fixed -z-10")
+
+    nav(class="flex justify-between items-center h-14 py-2 px-5 bg-white bg-opacity-95 fixed w-full text-black text-sm")
+      div 
+        a(class='flex items-center text-lg  font-black text-white rounded-sm bg-gray-700 px-2 py-0.5' href='/') 
+          span mo
+
+      if user 
+        div(class="flex justify-between items-center my-1") 
+          a(class='mr-4 font-bold flex items-center justify-center bg-opacity-80 rounded-sm bg-yellow-200 py-1 px-2 transition-opacity hover:bg-opacity-100' 
+          href='/create-message')
+            span(class="material-icons mr-1" aria-hidden="true") add_box
+            span New Message 
+          form(action='/log-out?_method=DELETE' method='POST')
+            button(class='flex items-center font-semibold bg-opacity-80 rounded-sm bg-gray-200 py-1.5 px-2 transition hover:bg-opacity-100' 
+            type='submit') Log Out
+              
+
+      else     
+        div(class="flex justify-between items-center my-1") 
+          a(class='mr-4 font-semibold flex items-center justify-center bg-opacity-80 rounded-sm bg-gray-200 py-1 px-2 transition-opacity hover:bg-opacity-100' 
+          href='/log-in') Log In
+          a(class='mr-4 font-semibold flex items-center justify-center bg-opacity-80 rounded-sm bg-blue-200 py-1 px-2 transition-opacity hover:bg-opacity-100' 
+          href='/sign-up') Sign Up    
+            
     block content

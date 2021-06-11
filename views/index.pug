@@ -1,19 +1,21 @@
 extends layout
 
 block content
-  if user
-    h1 Welcome Back #{user.username}
-    a(href='/create-message') New Message
-    form(action='/log-out?_method=DELETE' method='POST')
-      button(type='submit') Log Out
+  main(class="py-10 px-5")
+    div(class="flex justify-start items-center flex-col mt-10 rounded-sm bg-white bg-opacity-50 max-w-xl min-h-screen my-0 mx-auto p-7") 
+      h1(class=" text-2xl font-bold pb-6") Message Board
 
-  else  
-    h1 Express
-    p Welcome to Express
-    a(href='/sign-up') Sign Up
-    a(href='/log-in') Log In
+      each msg in messages
+        each userData in users_list
+          div(class="flex flex-col mb-3 text-black rounded-sm bg-white bg-opacity-70 p-5  shadow w-full cursor-pointer transform transition duration-150 hover:bg-opacity-90")
+            div(class=" text-sm flex items-center pb-1")
+              if user 
+                span(class="mr-2 font-bold rounded-sm bg-green-200 px-2 py-1") #{(userData._id.toString() === msg.message_owner.toString() ? userData.username : null)}
+              else 
+                span(class="mr-2 font-bold rounded-sm bg-gray-200 px-2 py-1") Hidden   
+              span(class=" opacity-60") #{formatDistanceToNow(msg.timestamp, {includeSeconds: true, addSuffix: true})} 
+            span(class="pb-1 font-bold text-lg") #{msg.title}
+            p(class="pb-1") #{msg.content}
 
-  ul 
-    each message in messages 
-      li #{message.title}  
+        
 
