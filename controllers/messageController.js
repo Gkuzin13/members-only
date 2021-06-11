@@ -4,7 +4,7 @@ const { body, validationResult } = require('express-validator');
 const async = require('async');
 
 exports.create_message_get = function (req, res, next) {
-  res.render('create-message', {});
+  res.render('create-message', { user: req.user });
 };
 
 exports.create_message_post = [
