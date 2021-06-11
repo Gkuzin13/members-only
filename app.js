@@ -18,6 +18,8 @@ const indexRouter = require('./routes/index');
 
 const app = express();
 
+app.locals.formatDistanceToNow = require('date-fns/formatDistanceToNow');
+
 // Set up default mongoose connection
 const mongoDB = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.itmdy.mongodb.net/Member-Only?retryWrites=true&w=majority`;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
