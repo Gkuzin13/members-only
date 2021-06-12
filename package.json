@@ -4,18 +4,20 @@
   "private": true,
   "scripts": {
     "tailwind:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css",
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "async": "^3.2.0",
     "autoprefixer": "^10.2.6",
     "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
     "date-fns": "^2.22.1",
     "debug": "^4.3.1",
     "express": "^4.17.1",
     "express-flash": "^0.0.2",
     "express-session": "^1.17.2",
     "express-validator": "^6.11.1",
+    "helmet": "^4.6.0",
     "http-errors": "^1.8.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.12.13",
