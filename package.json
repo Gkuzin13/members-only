@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "tailwind:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css",
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www"
   },
   "dependencies": {
     "autoprefixer": "^10.2.6",
