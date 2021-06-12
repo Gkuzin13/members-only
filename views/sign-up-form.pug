@@ -1,17 +1,31 @@
 extends layout
 
 block content
-  div
-    h1 Sign Up
-    form(action='' method='POST')
-      label(for='username') Username: 
-      input(type='text' name='username' required='')
-      label(for='password') Password: 
-      input(type='password' name='password' minlength='8' required='')
-      if (typeof message !== 'undefined')
-        h3 #{message.error}
-     
-      button(type='submit') Sign Up
-    
-    a(href='/log-in') Log In
+  main(class="py-10 px-5")
+    div(class="flex justify-start items-center flex-col mt-10 rounded-sm shadow-sm bg-white bg-opacity-50 max-w-xl my-0 mx-auto p-7") 
+      h1(class=" text-3xl font-bold pb-6") Sign Up
+      form(class="flex flex-col mb-3 text-black rounded-sm bg-white bg-opacity-80 p-5  shadow w-full transform transition duration-150 hover:bg-opacity-90"
+      action='' method='POST')
+        label(class='font-semibold text-sm pt-2' for='username') Username
+        input(class="shadow-sm appearance-none border rounded-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+        type='text' name='username' placeholder="Enter your username" required='true')
+ 
+        label(class='font-semibold text-sm pt-2' for='password') Password
+        input(class="shadow-sm appearance-none border rounded-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+        type='password' name='password' placeholder="Your secure password" minlength='8' required='true')
+
+        if (message) 
+          h4(class=" text-red-400 pt-2") #{message}
+
+        button(class='font-semibold flex items-center justify-center bg-opacity-70 rounded-sm bg-blue-300 py-2 px-2 mt-4 transition-all hover:bg-opacity-100' 
+        type='submit')
+          span(class="material-icons mr-1" aria-hidden="true") login
+          span Sign Up 
+
+        span(class="text-center pt-7") Already have a user? 
+          a(class="font-bold underline text-gray-800" href='/log-in') Log In 
+  
+  
+  
+
 

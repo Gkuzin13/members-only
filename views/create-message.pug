@@ -1,12 +1,23 @@
 extends layout
 
 block content
-  h1 Create Message
-  
-  form(action='/create-message' method='POST')
-    label(for='message') Title 
-    input#title(type='text' name='title' required='')
-    label(for='message') Message 
-    input#message(type='message' name='message' required='')
-    button(type='submit') Submit
+  main(class="py-10 px-5")
+    div(class="flex justify-start items-center flex-col mt-10 rounded-sm bg-white bg-opacity-50 max-w-xl my-0 mx-auto p-7") 
+
+      h1(class=" text-3xl font-bold pb-6") Your Message
+    
+      form(class="flex flex-col mb-3 text-black rounded-sm bg-white bg-opacity-80 p-5 shadow-sm w-full transform transition duration-150 hover:bg-opacity-90"
+      action='/create-message' method='POST')
+        label(class='font-semibold text-sm pt-2' for='message') Title 
+        input(class="shadow-sm appearance-none border rounded-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        type='text' name='title' placeholder="Message title" required='true')
+
+        label(class='font-semibold text-sm pt-2' for='message') Message 
+        textarea(class="shadow-sm appearance-none border rounded-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        cols="30", rows="10" type='text' name='message' placeholder="Message content" required='true')
+
+        button(class='font-semibold flex items-center justify-center bg-opacity-80 rounded-sm text-gray-900 bg-green-200 py-2 px-2 mt-4 transition-all hover:bg-opacity-100' 
+        type='submit')
+          span(class="material-icons mr-1") check_box 
+          span(class="font-semibold") Submit
 
