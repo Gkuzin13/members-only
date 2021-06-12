@@ -18,6 +18,7 @@ const indexRouter = require('./routes/index');
 
 const app = express();
 
+// Pass date-fns
 app.locals.formatDistanceToNow = require('date-fns/formatDistanceToNow');
 
 // Set up default mongoose connection

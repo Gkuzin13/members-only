@@ -14,7 +14,7 @@ exports.create_message_post = [
     .isLength({ min: 1 })
     .escape(),
 
-  (req, res, next) => {
+  async (req, res, next) => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -22,28 +22,29 @@ exports.create_message_post = [
       return;
     }
 
-    const message = new Message({
-      title: req.body.title,
-      content: req.body.message,
-      timestamp: Date.now(),
-      message_owner: req.user._id,
-    }).save((err) => {
-      if (err) {
-        return next(err);
-      }
+    try {
+      const message = new Message({
+        title: req.body.title,
+        content: req.body.message,
+        timestamp: Date.now(),
+        message_owner: req.user._id,
+      });
+
+      await message.save();
 
       res.redirect('/');
-    });
+    } catch (err) {
+      return next(err);
+    }
   },
 ];
 
 // Get messages on index get
 exports.get_messages = async function (req, res, next) {
   try {
-    const messages = await Message.find({}).populate(
-      'message_owner',
-      'username'
-    );
+    const messages = await Message.find({})
+      .sort({ timestamp: -1 })
+      .populate('message_owner', 'username');
 
     res.render('index', {
       messages: messages,
