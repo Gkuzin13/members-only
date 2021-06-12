@@ -38,26 +38,18 @@ exports.create_message_post = [
 ];
 
 // Get messages on index get
-exports.get_messages = function (req, res, next) {
-  async.parallel(
-    {
-      messages: function (callback) {
-        Message.find(callback);
-      },
-      users: function (callback) {
-        User.find(callback);
-      },
-    },
-    function (err, results) {
-      if (err) {
-        return next(err);
-      }
+exports.get_messages = async function (req, res, next) {
+  try {
+    const messages = await Message.find({}).populate(
+      'message_owner',
+      'username'
+    );
 
-      res.render('index', {
-        messages: results.messages,
-        users_list: results.users,
-        user: req.user,
-      });
-    }
-  );
+    res.render('index', {
+      messages: messages,
+      user: req.user,
+    });
+  } catch (err) {
+    next(err);
+  }
 };
