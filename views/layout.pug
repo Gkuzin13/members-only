@@ -24,6 +24,10 @@ html(class=" font-open-sans")
 
       if user 
         div(class="flex justify-between items-center my-1") 
+          div(class="mr-4 text-base") 
+            span(class="text-gray-800") Hello, 
+              strong #{user.username}!
+
           a(class='mr-4 font-bold flex items-center justify-center bg-opacity-80 rounded-sm bg-yellow-200 py-1 px-2 transition-opacity hover:bg-opacity-100' 
           href='/create-message')
             span(class="material-icons mr-1" aria-hidden="true") add_box
@@ -32,7 +36,6 @@ html(class=" font-open-sans")
             button(class='flex items-center font-semibold bg-opacity-80 rounded-sm bg-gray-200 py-1.5 px-2 transition hover:bg-opacity-100' 
             type='submit') Log Out
               
-
       else     
         div(class="flex justify-between items-center my-1") 
           a(class='mr-4 font-semibold flex items-center justify-center bg-opacity-80 rounded-sm bg-gray-200 py-1 px-2 transition-opacity hover:bg-opacity-100' 
