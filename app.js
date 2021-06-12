@@ -7,6 +7,8 @@ const passport = require('passport');
 const flash = require('express-flash');
 const methodOverride = require('method-override');
 const logger = require('morgan');
+const compression = require('compression');
+const helmet = require('helmet');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -34,9 +36,13 @@ mongoose.connection.on('connected', () => {
   console.log('MongoDB connected');
 });
 
+app.use(compression());
+app.use(helmet());
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
 app.use(express.urlencoded({ extended: false }));
 app.use(flash());
 app.use(
