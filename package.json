@@ -7,7 +7,6 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "async": "^3.2.0",
     "autoprefixer": "^10.2.6",
     "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",

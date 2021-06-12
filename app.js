@@ -9,8 +9,11 @@ const methodOverride = require('method-override');
 const logger = require('morgan');
 const compression = require('compression');
 const helmet = require('helmet');
-const dotenv = require('dotenv');
-dotenv.config();
+
+if (process.env.NODE_ENV === 'development') {
+  const dotenv = require('dotenv');
+  dotenv.config();
+}
 
 // Initialize passport
 const initializePassport = require('./config/passportConfig');
