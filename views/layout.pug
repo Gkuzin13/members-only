@@ -17,23 +17,23 @@ html(class=" font-open-sans")
   body(class="font-open-sans")
     span(class=" bg-main h-full w-full bg-no-repeat bg-cover fixed -z-10")
 
-    nav(class="flex justify-between items-center h-14 py-2 px-5 bg-white bg-opacity-95 fixed w-full text-black text-sm z-10 lg:px-20")
+    nav(class="flex justify-between items-center h-14 py-2 px-4 bg-white bg-opacity-95 fixed w-full text-black text-sm z-10 lg:px-20")
       div 
         a(class='flex items-center text-lg  font-black text-white rounded-sm bg-gray-800 px-2 py-0.5' href='/') 
           span mo
 
       if user 
         div(class="flex justify-between items-center my-1") 
-          div(class="mr-4 text-base") 
+          div(class="mx-4 text-base w-full whitespace-nowrap") 
             span(class="text-gray-800") Hello, 
               strong #{user.username}!
 
-          a(class='mr-4 font-bold flex items-center justify-center bg-opacity-80 rounded-sm bg-yellow-200 py-1 px-2 transition-opacity hover:bg-opacity-100' 
+          a(class='mr-4 whitespace-nowrap font-bold flex items-center justify-center bg-opacity-80 rounded-sm bg-yellow-200 py-1 px-2 transition-opacity hover:bg-opacity-100' 
           href='/create-message')
             span(class="material-icons mr-1" aria-hidden="true") add_box
-            span New Message 
+            span Message 
           form(action='/log-out?_method=DELETE' method='POST')
-            button(class='flex items-center font-semibold bg-opacity-80 rounded-sm bg-gray-200 py-1.5 px-2 transition hover:bg-opacity-100' 
+            button(class='whitespace-nowrap flex items-center font-semibold bg-opacity-80 rounded-sm bg-gray-200 py-1.5 px-2 transition hover:bg-opacity-100' 
             type='submit') Log Out
               
       else     
