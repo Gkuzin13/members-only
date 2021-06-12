@@ -1,7 +1,5 @@
 const Message = require('../models/message');
-const User = require('../models/user');
 const { body, validationResult } = require('express-validator');
-const async = require('async');
 
 exports.create_message_get = function (req, res, next) {
   res.render('create-message', { user: req.user });
