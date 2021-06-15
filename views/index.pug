@@ -2,7 +2,7 @@ extends layout
 
 block content
   main(class="py-10 px-5")
-    div(class="flex justify-start items-center flex-col mt-10 rounded-sm bg-white bg-opacity-50 shadow-sm max-w-xl min-h-screen my-0 mx-auto p-7") 
+    div(class="flex justify-start items-center flex-col mt-10 rounded-sm bg-white bg-opacity-50 shadow-sm max-w-xl min-h-screen my-0 mx-auto py-7 px-5") 
       h1(class=" text-3xl font-bold pb-6") Message Board
       if messages.length < 1
         span(class="font-semibold") Empty here..
@@ -26,6 +26,3 @@ block content
               
           span(class="pb-1 font-bold text-lg") #{msg.title}
           p(class="pb-1") #{msg.content} 
-
-        
-
